@@ -1,0 +1,166 @@
+body {
+    font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: 1.4em;
+    background: #f5f5f5;
+    color: #4d4d4d;
+    min-width: 230px;
+    max-width: 550px;
+    margin: 0 auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    font-weight: 300;
+}
+section {
+    background: #fff;
+    margin: 130px 0 40px 0;
+    position: relative;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+}
+h1 {
+    position: absolute;
+    top: -155px;
+    width: 100%;
+    font-size: 100px;
+    font-weight: 100;
+    text-align: center;
+    color: rgba(175, 47, 47, 0.15);
+    -webkit-text-rendering: optimizeLegibility;
+    -moz-text-rendering: optimizeLegibility;
+    text-rendering: optimizeLegibility;
+}
+form {
+    display: flex;
+    z-index: 2;
+    border-top: 1px solid #e6e6e6;
+    height: 65px;
+    box-shadow: inset 0 -10px 10px -10px rgba(0, 0, 0, 0.2)
+}
+form input[type='checkbox'] {
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+    -webkit-appearance: none;
+    appearance: none;
+    position: relative;
+    width: 50px;
+}
+form input[type='checkbox']:before {
+    content: '❯';
+    font-size: 22px;
+    color: #e6e6e6;
+    padding: 14px 18px;
+    position: absolute;
+}
+input[type='text'] {
+    padding: 16px 16px 16px 60px;
+    border: none;
+    background: rgba(0, 0, 0, 0.003);
+    position: relative;
+    margin: 0;
+    width: 100%;
+    font-size: 24px;
+    font-family: inherit;
+    font-weight: inherit;
+    line-height: 1.4em;
+    border: 0;
+    outline: none;
+    color: inherit;
+    padding: 6px;
+    border: 1px solid #999;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    border: none;
+}
+ul {
+    padding: 0;
+    margin: 0;
+}
+ul.todos li {
+    display: flex;
+    height: 58px;
+    border-bottom: 1px solid #ededed;
+    align-items: center;
+}
+ul li input[type='checkbox']::after {
+    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#ededed" stroke-width="3"/></svg>');
+}
+ul li input[type='checkbox']:checked:after {
+    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#bddad5" stroke-width="3"/><path fill="#5dc2af" d="M72 25L42 71 27 56l-4 4 20 20 34-52z"/></svg>');
+}
+ul li input[type='checkbox'] {
+    text-align: center;
+    width: 60px;
+    border: none;
+    -webkit-appearance: none;
+}
+button:focus,
+input[type='checkbox']:focus {
+    outline: none;
+}
+ul li button {
+    -webkit-appearance: none;
+    appearance: none;
+    background: none;
+    border: 0;
+    width: 40px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+ul li button:after {
+    font-size: 30px;
+    color: #cc9a9a;
+    content: 'x';
+    margin-right: 12px;
+}
+ul li:hover button {
+    opacity: 1;
+}
+footer:before {
+    pointer-events: none;
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 50px;
+    overflow: hidden;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 8px 0 -3px #f6f6f6, 0 9px 1px -3px rgba(0, 0, 0, 0.2), 0 16px 0 -6px #f6f6f6, 0 17px 2px -6px rgba(0, 0, 0, 0.2);
+    content: '';
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 8px 0 -3px #f6f6f6, 0 9px 1px -3px rgba(0, 0, 0, 0.2), 0 16px 0 -6px #f6f6f6, 0 17px 2px -6px rgba(0, 0, 0, 0.2);
+}
+.filters {
+    margin-left: 60px;
+    display: inline-flex;
+    list-style: none;
+    flex-grow: 1;
+}
+footer > span {
+    margin-left: 18px;
+}
+footer {
+    color: #777;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.filters li {
+    text-transform: capitalize;
+    padding: 4px;
+    margin: 5px;
+    cursor: pointer;
+}
+.filters li.selected {
+    border-radius: 3px;
+    border: 1px solid rgba(175, 47, 47, 0.2);
+}
+footer a {
+    color: #777;
+    margin-right: 12px;
+    text-decoration: none;
+}
+footer a:hover {
+    text-decoration: underline;
+}
