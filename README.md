@@ -1,2 +1,6 @@
 # next-todos
-100 lines todos app powered by next.js and now
+About 200 lines todos app powered by next.js, now and jet realtime.
+
+# Server
+
+The server source can be found [here](https://github.com/lipp/node-jet/blob/master/examples/todo/todo-server.js) (90 Lines extra). 
