@@ -2,7 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import { createStore, applyMiddleware, combineReducers } from 'redux'
 import { Provider, connect } from 'react-redux'
-import { fetch, sorted, set, call } from 'redux-jet'
+import { fetch, sorted, set, call, get } from 'redux-jet'
 import thunk from 'redux-thunk'
 import DebouncedInput from '../components/DebouncedInput'
 
@@ -86,12 +86,13 @@ const chainReducers = (reducer, map) => {
   }
 }
 
-const initStore = () => {
+const initStore = (initialState) => {
   const filters = {
     completed: todo => todo.value.completed,
     active: todo => !todo.value.completed,
     all: todo => todo
   }
+  // const initialDisplay = initialState.display || {filter: 'all', todos: []}
   const store = createStore(combineReducers({
     display: chainReducers(sorted('todos'), (todos, state = {filter: 'all', todos: []}, action) => {
       if (action.type === 'SET_FILTER') {
@@ -103,25 +104,42 @@ const initStore = () => {
     completed: chainReducers(sorted('todos'), todos => todos.filter(filters.completed)),
     active: chainReducers(sorted('todos'), todos => todos.filter(filters.active))
   }), applyMiddleware(thunk))
+  if (initialState) {
+    let state = store.getState()
+    const reducers = ['display', 'completed', 'active']
+    reducers.forEach(name => state[name] = initialState[name])
+  }
   return store
+}
+
+const todoExpression = {
+  path: {startsWith: 'todo/#'},
+   sort: {
+     byValueField: {id: 'number'},
+     from: 1,
+     to: 100
+   }
 }
 
 export default class App extends React.Component {
 
+  static async getInitialProps ({req}) {
+    if (req) {
+      const store = initStore()
+      return get(connection, todoExpression, 'todos')(store.dispatch).then((xx) => {
+        return {initialState: store.getState(), store}
+      })
+    }
+  }
+
   componentDidMount () {
-    fetch(connection, {
-      path: {startsWith: 'todo/#'},
-      sort: {
-        byValueField: {id: 'number'},
-        from: 1,
-        to: 100
-      }
-    }, 'todos')(this.store.dispatch)
+    console.log('will')
+    fetch(connection, todoExpression, 'todos')(this.store.dispatch)
   }
 
   constructor (props) {
     super(props)
-    this.store = initStore()
+    this.store = props.store.dispatch ? props.store : initStore(props.initialState)
   }
 
   render () {
