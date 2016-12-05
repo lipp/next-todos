@@ -1,5 +1,5 @@
 # next-todos
-About 200 lines isomorphic todos app powered by [next.js](https://github.com/zeit/next.js/), [redux](https://github.com/reactjs/redux) and [Jet](https://jetbus.io) realtime. 
+About 200 lines isomorphic todos app powered by [next.js](https://github.com/zeit/next.js/), [redux](https://github.com/reactjs/redux) and [Jet](http://jetbus.io) realtime. 
 
 The todos are synced between browsers.
 
