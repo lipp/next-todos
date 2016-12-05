@@ -92,23 +92,21 @@ const initStore = (initialState) => {
     active: todo => !todo.value.completed,
     all: todo => todo
   }
-  // const initialDisplay = initialState.display || {filter: 'all', todos: []}
+
+  const initialTodos = initialState ? initialState.display.todos : []
+  const sortedTodos = sorted('todos', initialTodos)
+
   const store = createStore(combineReducers({
-    display: chainReducers(sorted('todos'), (todos, state = {filter: 'all', todos: []}, action) => {
+    display: chainReducers(sortedTodos, (todos, state = {filter: 'all', todos: []}, action) => {
       if (action.type === 'SET_FILTER') {
         state.filter = action.filter
       }
       state.todos = todos.filter(filters[state.filter])
       return state
     }),
-    completed: chainReducers(sorted('todos'), todos => todos.filter(filters.completed)),
-    active: chainReducers(sorted('todos'), todos => todos.filter(filters.active))
+    completed: chainReducers(sortedTodos, todos => todos.filter(filters.completed)),
+    active: chainReducers(sortedTodos, todos => todos.filter(filters.active))
   }), applyMiddleware(thunk))
-  if (initialState) {
-    let state = store.getState()
-    const reducers = ['display', 'completed', 'active']
-    reducers.forEach(name => state[name] = initialState[name])
-  }
   return store
 }
 
