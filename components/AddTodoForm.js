@@ -3,6 +3,7 @@ import React from 'react'
 const AddTodoForm = ({connection, call}) => (
   <form onSubmit={(event) => {
     call(connection, 'todo/add', [event.target.title.value])
+    event.target.title.value = ''
     event.preventDefault()
   }} >
     <input type='checkbox' />
