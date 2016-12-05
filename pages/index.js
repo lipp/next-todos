@@ -131,7 +131,6 @@ export default class App extends React.Component {
   }
 
   componentDidMount () {
-    console.log('will')
     fetch(connection, todoExpression, 'todos')(this.store.dispatch)
   }
 
