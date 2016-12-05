@@ -20,7 +20,7 @@ The server source can be found [here](https://github.com/lipp/node-jet/blob/mast
 
 # Inspect with Radar
 
-[Radar](https://lipp.github.io/radar/#/) provides another view on the realtime data.
+[Radar](https://lipp.github.io/radar/#/) provides another view on the realtime data which is provided by a [Jet Daemon](https://github.com/lipp/node-jet/blob/master/examples/todo/todo-server.js) running on `todos-demo.now.sh`.
 
 Enter this daemon url: `wss://todos-demo.now.sh`
 
