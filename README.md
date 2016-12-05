@@ -1,10 +1,14 @@
 # next-todos
-About 200 lines isomorphic todos app powered by next.js, redux and jet realtime.
+About 200 lines isomorphic todos app powered by [next.js](https://github.com/zeit/next.js/), [redux](https://github.com/reactjs/redux) and [Jet](https://jetbus.io) realtime. 
+
+The todos are synced between browsers.
 
 [![Live](./todos.gif)](https://todos.now.sh)
 
 The canonical TodoApp using [node-jet](https://github.com/lipp/node-jet) as realtime data backend mechanism. [Jet](https://jetbus.io) uses websockets for fetching/streaming the data and to make changes to the data.
 [Redux](https://github.com/reactjs/redux) and [redux-jet](https://github.com/lipp/redux-jet) are used for a clear and simple data flow.
+
+[next.js](https://github.com/zeit/next.js/) allows to easily make the server -> client render transition (awesome!!!).
 
 [redux-jet](https://github.com/lipp/redux-jet) hides the stateful nature of the realtime streaming (where differences are pushed over the wire) and helps doing the isomorphic transition with `get` and `fetch` seamlessly.
 
