@@ -28,3 +28,7 @@ Enter this daemon url: `wss://todos-demo.now.sh`
 
 - Authentication / session
 - Scaling
+
+# Related
+
+[100 lines of code Hackernews reader](https://github.com/lipp/hackernews) using next.js and graphql.
