@@ -6,7 +6,7 @@ The todos are synced between browsers.
 [![Live](./todos.gif)](https://todos.now.sh)
 
 The canonical TodoApp using [node-jet](https://github.com/lipp/node-jet) as realtime data backend mechanism. [Jet](https://jetbus.io) uses websockets for fetching/streaming the data and to make changes to the data.
-[Redux](https://github.com/reactjs/redux) and [redux-jet](https://github.com/lipp/redux-jet) are used for a clear and simple data flow.
+[Redux](https://github.com/reactjs/redux) and [redux-jet](https://github.com/lipp/redux-jet) are used for a clear and simple unidirectional data flow.
 
 [next.js](https://github.com/zeit/next.js/) allows to easily make the server -> client render transition (awesome!!!).
 
