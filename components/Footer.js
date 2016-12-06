@@ -1,12 +1,12 @@
 import React from 'react'
 
-const Footer = ({clearCompleted, completedIds, selectedFilter, active, setFilter}) => {
+const Footer = ({clearCompleted, completedIds, selectedFilter, actives, setFilter}) => {
   return (
     <footer>
       <span>
-        {active.length === 0 ? 'no items ' : null}
-        {active.length === 1 ? '1 item ' : null}
-        {active.length > 1 ? active.length + ' items ' : null}
+        {actives === 0 ? 'no items ' : null}
+        {actives === 1 ? '1 item ' : null}
+        {actives > 1 ? actives + ' items ' : null}
         left
       </span>
       <ul className='filters'>

@@ -38,7 +38,7 @@ const connectFooter = () => {
   }
 
   const mapStateToProps = (state) => ({
-    active: state.active,
+    actives: state.active.length,
     completedIds: state.completed.map(todo => todo.value.id),
     selectedFilter: state.display.filter
   })
