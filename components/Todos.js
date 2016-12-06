@@ -1,25 +1,33 @@
 import React from 'react'
 import DebouncedInput from './DebouncedInput'
 
-const Todo = ({connection, set, call, todo: {path, value: {id, completed, title}}}) => (
+const Todo = ({setCompleted, setTitle, remove, todo: {completed, title}}) => (
   <li>
     <input
       type='checkbox'
       checked={completed}
-      onChange={() => set(connection, path, {completed: !completed})}
+      onChange={() => setCompleted(!completed)}
     />
     <DebouncedInput
       value={title}
       timeout={200}
-      onChange={(e) => set(connection, path, {title: e.target.value})}
+      onChange={(e) => setTitle(e.target.value)}
     />
-    <button onClick={() => call(connection, 'todo/remove', [id])} />
+    <button onClick={() => remove()} />
   </li>
 )
 
-const Todos = ({connection, set, call, todos}) => (
+const Todos = ({setCompleted, setTitle, remove, todos}) => (
   <ul className='todos'>
-    {todos.map(todo => <Todo key={todo.value.id} todo={todo} connection={connection} set={set} call={call} />)}
+    {
+      todos.map(todo => <Todo
+        key={todo.value.id}
+        todo={todo.value}
+        setCompleted={(completed) => setCompleted(todo.path, completed)}
+        setTitle={(title) => setTitle(todo.path, title)}
+        remove={() => remove(todo.value.id)}
+        />)
+    }
   </ul>
 )
 

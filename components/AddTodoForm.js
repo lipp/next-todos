@@ -1,8 +1,8 @@
 import React from 'react'
 
-const AddTodoForm = ({connection, call}) => (
+const AddTodoForm = ({addTodo}) => (
   <form onSubmit={(event) => {
-    call(connection, 'todo/add', [event.target.title.value])
+    addTodo(event.target.title.value)
     event.target.title.value = ''
     event.preventDefault()
   }} >

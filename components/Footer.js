@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Footer = ({connection, call, completedIds, selectedFilter, active, setFilter, todos}) => {
+const Footer = ({clearCompleted, completedIds, selectedFilter, active, setFilter, todos}) => {
   const filters = ['all', 'active', 'completed']
   return (
     <footer>
@@ -15,7 +15,7 @@ const Footer = ({connection, call, completedIds, selectedFilter, active, setFilt
           <li className={selectedFilter === filter && 'selected'} key={filter} onClick={() => setFilter(filter)}>{filter}</li>
         )}
       </ul>
-      <a href='#' onClick={() => call(connection, 'todo/remove', completedIds)}>Clear completed</a>
+      <a href='#' onClick={() => clearCompleted(completedIds)}>Clear completed</a>
     </footer>
   )
 }
