@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Footer = ({clearCompleted, completedIds, selectedFilter, active, setFilter, todos}) => {
+const Footer = ({clearCompleted, completedIds, selectedFilter, active, setFilter}) => {
   const filters = ['all', 'active', 'completed']
   return (
     <footer>
