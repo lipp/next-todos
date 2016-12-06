@@ -26,6 +26,19 @@ The server source can be found [here](https://github.com/lipp/node-jet/blob/mast
 
 Enter this daemon url: `wss://todos-demo.now.sh`
 
+# Developing
+
+```bash
+npm run dev
+```
+
+# Production
+
+```bash
+npm run build
+npm start
+```
+
 # Not covered
 
 - Authentication / session
