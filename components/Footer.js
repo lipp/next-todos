@@ -1,7 +1,6 @@
 import React from 'react'
 
 const Footer = ({clearCompleted, completedIds, selectedFilter, active, setFilter}) => {
-  const filters = ['all', 'active', 'completed']
   return (
     <footer>
       <span>
@@ -11,7 +10,7 @@ const Footer = ({clearCompleted, completedIds, selectedFilter, active, setFilter
         left
       </span>
       <ul className='filters'>
-        {filters.map(filter =>
+        {['all', 'active', 'completed'].map(filter =>
           <li className={selectedFilter === filter && 'selected'} key={filter} onClick={() => setFilter(filter)}>{filter}</li>
         )}
       </ul>
