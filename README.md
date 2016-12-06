@@ -14,6 +14,8 @@ The canonical TodoApp using [node-jet](https://github.com/lipp/node-jet) as real
 
 It's note worthy, that the [redux store](https://github.com/lipp/next-todos/blob/master/store.js#L16) is identical for server and client js code! The only difference is that the store population on the server is triggered by the "finite" [redux-jet get](https://github.com/lipp/next-todos/blob/master/pages/index.js#L49) whereas the client issues an "infinite / streaming" [redux-jet fetch](https://github.com/lipp/next-todos/blob/master/pages/index.js#L56)
 
+The [components](https://github.com/lipp/next-todos/blob/master/components/) are jet-agnostic. All the jet related stuff are located in [pages/index.js](https://github.com/lipp/next-todos/blob/master/pages/index.js) and [store.js](https://github.com/lipp/next-todos/blob/master/store.js).
+
 # Server
 
 The server source can be found [here](https://github.com/lipp/node-jet/blob/master/examples/todo/todo-server.js) (90 Lines extra). 
@@ -23,6 +25,19 @@ The server source can be found [here](https://github.com/lipp/node-jet/blob/mast
 [Radar](https://lipp.github.io/radar/#/) provides another view on the realtime data which is provided by a [Jet Daemon](https://github.com/lipp/node-jet/blob/master/examples/todo/todo-server.js) running on `todos-demo.now.sh`.
 
 Enter this daemon url: `wss://todos-demo.now.sh`
+
+# Developing
+
+```bash
+npm run dev
+```
+
+# Production
+
+```bash
+npm run build
+npm start
+```
 
 # Not covered
 
