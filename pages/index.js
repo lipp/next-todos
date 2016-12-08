@@ -9,36 +9,50 @@ import DisconnectedFooter from '../components/Footer'
 
 const connection = {url: 'wss://todos-demo.now.sh'}
 
-const AddTodoForm = connect(() => ({connection}), {call})(DisconnectedAddTodoForm)
+const connectAddTodoForm = () => {
+  const actions = {
+    addTodo: (title) => call(connection, 'todo/add', [title])
+  }
 
-const mapStateToTodosProps = state => ({
-  todos: state.display.todos,
-  connection
-})
+  return connect(null, actions)(DisconnectedAddTodoForm)
+}
 
-const Todos = connect(mapStateToTodosProps, {set, call})(DisconnectedTodos)
+const connectTodos = () => {
+  const mapStateToProps = state => ({
+    todos: state.display.todos
+  })
 
-const setFilter = (filter) => ({
-  type: 'SET_FILTER',
-  filter
-})
+  const todosActions = {
+    setCompleted: (path, completed) => set(connection, path, {completed}),
+    setTitle: (path, title) => set(connection, path, {title}),
+    remove: id => call(connection, 'todo/remove', [id])
+  }
 
-const mapStateToFooterProps = (state) => ({
-  connection,
-  active: state.active,
-  completedIds: state.completed.map(todo => todo.value.id),
-  selectedFilter: state.display.filter
-})
+  return connect(mapStateToProps, todosActions)(DisconnectedTodos)
+}
 
-const Footer = connect(mapStateToFooterProps, {setFilter, call})(DisconnectedFooter)
+const connectFooter = () => {
+  const actions = {
+    setFilter: filter => ({type: 'SET_FILTER', filter}),
+    clearCompleted: ids => call(connection, 'todo/remove', ids)
+  }
+
+  const mapStateToProps = (state) => ({
+    actives: state.active.length,
+    completedIds: state.completed.map(todo => todo.value.id),
+    selectedFilter: state.display.filter
+  })
+
+  return connect(mapStateToProps, actions)(DisconnectedFooter)
+}
+
+const AddTodoForm = connectAddTodoForm()
+const Todos = connectTodos()
+const Footer = connectFooter()
 
 const todoExpression = {
   path: {startsWith: 'todo/#'},
-  sort: {
-    byValueField: {id: 'number'},
-    from: 1,
-    to: 100
-  }
+  sort: {byValueField: {id: 'number'}, from: 1, to: 100}
 }
 
 export default class App extends React.Component {
