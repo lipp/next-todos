@@ -7,12 +7,20 @@
     "next": "^1.2.3",
     "react-redux": "^4.4.6",
     "redux": "^3.6.0",
-    "redux-jet": "^1.2.0",
+    "redux-jet": "^1.2.1",
     "redux-thunk": "^2.1.0"
   },
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "test": "standard"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.1.1",
+    "standard": "^8.6.0"
+  },
+  "standard": {
+    "parser": "babel-eslint"
   }
 }
