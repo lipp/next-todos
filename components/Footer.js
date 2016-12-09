@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Footer = ({clearCompleted, completedIds, selectedFilter, actives, setFilter}) => {
+export default ({clearCompleted, completedIds, selectedFilter, actives, setFilter}) => {
   return (
     <footer>
       <span>
@@ -11,13 +11,14 @@ const Footer = ({clearCompleted, completedIds, selectedFilter, actives, setFilte
       </span>
       <ul className='filters'>
         {['all', 'active', 'completed'].map(filter =>
-          <li className={selectedFilter === filter && 'selected'} key={filter} onClick={() => setFilter(filter)}>{filter}</li>
+          <li key={filter}
+            className={selectedFilter === filter && 'selected'}
+            onClick={() => setFilter(filter)}>
+            {filter}
+          </li>
         )}
       </ul>
       <a href='#' onClick={() => clearCompleted(completedIds)}>Clear completed</a>
     </footer>
   )
 }
-
-export default Footer
-

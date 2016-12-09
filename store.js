@@ -12,7 +12,7 @@ const chainReducers = (reducer, map) => {
   }
 }
 
-const initStore = (initialState) => {
+export default (initialState) => {
   const filters = {
     completed: todo => todo.value.completed,
     active: todo => !todo.value.completed,
@@ -35,5 +35,3 @@ const initStore = (initialState) => {
   }), applyMiddleware(thunk))
   return store
 }
-
-export default initStore
