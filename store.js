@@ -30,8 +30,13 @@ export default (initialState) => {
       state.todos = todos.filter(filters[state.filter])
       return state
     }),
-    completed: chainReducers(sortedTodos, todos => todos.filter(filters.completed)),
-    active: chainReducers(sortedTodos, todos => todos.filter(filters.active))
+    active: chainReducers(sortedTodos, todos => todos.filter(filters.active)),
+    setAllValue: (state = true, action) => {
+      if (action.type === 'TOGGLE_SET_ALL_VALUE') {
+        return !state
+      }
+      return state
+    }
   }), applyMiddleware(thunk))
   return store
 }

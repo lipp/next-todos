@@ -10,11 +10,20 @@ import DisconnectedFooter from '../components/Footer'
 const connection = {url: 'wss://todos-demo.now.sh'}
 
 const connectAddTodoForm = () => {
+
   const actions = {
-    addTodo: (title) => call(connection, 'todo/add', [title])
+    addTodo: (title) => call(connection, 'todo/add', [title]),
+    setAllCompleted: (completed) => call(connection, 'todo/setCompleted', [completed]),
+    toggleSetAllValue: () => ({
+      type: 'TOGGLE_SET_ALL_VALUE'
+    })
   }
 
-  return connect(null, actions)(DisconnectedAddTodoForm)
+  const mapStateToProps = state => ({
+    setAllValue: state.setAllValue
+  })
+
+  return connect(mapStateToProps, actions)(DisconnectedAddTodoForm)
 }
 
 const connectTodos = () => {
@@ -34,12 +43,11 @@ const connectTodos = () => {
 const connectFooter = () => {
   const actions = {
     setFilter: filter => ({type: 'SET_FILTER', filter}),
-    clearCompleted: ids => call(connection, 'todo/remove', ids)
+    clearCompleted: () => call(connection, 'todo/clearCompleted')
   }
 
   const mapStateToProps = (state) => ({
     actives: state.active.length,
-    completedIds: state.completed.map(todo => todo.value.id),
     selectedFilter: state.display.filter
   })
 

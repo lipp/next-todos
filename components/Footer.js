@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default ({clearCompleted, completedIds, selectedFilter, actives, setFilter}) => {
+export default ({clearCompleted, selectedFilter, actives, setFilter}) => {
   return (
     <footer>
       <span>
@@ -18,7 +18,7 @@ export default ({clearCompleted, completedIds, selectedFilter, actives, setFilte
           </li>
         )}
       </ul>
-      <a href='#' onClick={() => clearCompleted(completedIds)}>Clear completed</a>
+      <a href='#' onClick={() => clearCompleted()}>Clear completed</a>
     </footer>
   )
 }
