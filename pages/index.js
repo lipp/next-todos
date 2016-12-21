@@ -1,62 +1,12 @@
 import React from 'react'
 import Head from 'next/head'
-import { Provider, connect } from 'react-redux'
-import { call, set, get, fetch } from 'redux-jet'
+import {Provider} from 'react-redux'
+import {get, fetch} from 'redux-jet'
+import connection from '../connection'
 import initStore from '../store.js'
-import DisconnectedAddTodoForm from '../components/AddTodoForm'
-import DisconnectedTodos from '../components/Todos'
-import DisconnectedFooter from '../components/Footer'
-
-const connection = {url: 'wss://todos-demo.now.sh'}
-
-const connectAddTodoForm = () => {
-
-  const actions = {
-    addTodo: (title) => call(connection, 'todo/add', [title]),
-    setAllCompleted: (completed) => call(connection, 'todo/setCompleted', [completed]),
-    toggleSetAllValue: () => ({
-      type: 'TOGGLE_SET_ALL_VALUE'
-    })
-  }
-
-  const mapStateToProps = state => ({
-    setAllValue: state.setAllValue
-  })
-
-  return connect(mapStateToProps, actions)(DisconnectedAddTodoForm)
-}
-
-const connectTodos = () => {
-  const mapStateToProps = state => ({
-    todos: state.display.todos
-  })
-
-  const todosActions = {
-    setCompleted: (path, completed) => set(connection, path, {completed}),
-    setTitle: (path, title) => set(connection, path, {title}),
-    remove: id => call(connection, 'todo/remove', [id])
-  }
-
-  return connect(mapStateToProps, todosActions)(DisconnectedTodos)
-}
-
-const connectFooter = () => {
-  const actions = {
-    setFilter: filter => ({type: 'SET_FILTER', filter}),
-    clearCompleted: () => call(connection, 'todo/clearCompleted')
-  }
-
-  const mapStateToProps = (state) => ({
-    actives: state.active.length,
-    selectedFilter: state.display.filter
-  })
-
-  return connect(mapStateToProps, actions)(DisconnectedFooter)
-}
-
-const AddTodoForm = connectAddTodoForm()
-const Todos = connectTodos()
-const Footer = connectFooter()
+import Todos from '../containers/Todos'
+import AddTodoForm from '../containers/AddTodoForm'
+import Footer from '../containers/Footer'
 
 const todoExpression = {
   path: {startsWith: 'todo/#'},

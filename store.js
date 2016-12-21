@@ -31,12 +31,7 @@ export default (initialState) => {
       return state
     }),
     active: chainReducers(sortedTodos, todos => todos.filter(filters.active)),
-    setAllValue: (state = true, action) => {
-      if (action.type === 'TOGGLE_SET_ALL_VALUE') {
-        return !state
-      }
-      return state
-    }
+    setAllValue: (state = true, action) => action.type === 'TOGGLE_SET_ALL_VALUE' ? !state : state
   }), applyMiddleware(thunk))
   return store
 }

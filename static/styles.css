@@ -99,6 +99,10 @@ button:focus,
 input[type='checkbox']:focus {
     outline: none;
 }
+input[type='checkbox']:checked + input {
+    text-decoration: line-through;
+    color: gray;
+}
 ul li button {
     -webkit-appearance: none;
     appearance: none;
