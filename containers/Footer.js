@@ -9,8 +9,8 @@ const actions = {
 }
 
 const mapStateToProps = (state) => ({
-  actives: state.active.length,
-  selectedFilter: state.display.filter
+  actives: state.todos.filter(todo => !todo.value.completed).length,
+  selectedFilter: state.filter
 })
 
 export default connect(mapStateToProps, actions)(Footer)

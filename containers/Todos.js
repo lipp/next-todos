@@ -3,8 +3,14 @@ import {connect} from 'react-redux'
 import {call, set} from 'redux-jet'
 import connection from '../connection'
 
+const filters = {
+  completed: todo => todo.value.completed,
+  active: todo => !todo.value.completed,
+  all: todo => todo
+}
+
 const mapStateToProps = state => ({
-  todos: state.display.todos
+  todos: state.todos.filter(filters[state.filter])
 })
 
 const actions = {
