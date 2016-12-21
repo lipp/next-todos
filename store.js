@@ -8,12 +8,14 @@ const query = {
   sort: {byValueField: {id: 'number'}, from: 1, to: 100}
 }
 
+const reducer = initialState => combineReducers({
+  todos: sorted('todos', initialState ? initialState.todos : []),
+  filter: (state = 'all', action) => action.type === 'SET_FILTER' ? action.filter : state,
+  setAllValue: (state = true, action) => action.type === 'TOGGLE_SET_ALL_VALUE' ? !state : state
+})
+
 export default (initialState) => {
-  const store = createStore(combineReducers({
-    todos: sorted('todos', initialState ? initialState.todos : []),
-    filter: (state = 'all', action) => action.type === 'SET_FILTER' ? action.filter : state,
-    setAllValue: (state = true, action) => action.type === 'TOGGLE_SET_ALL_VALUE' ? !state : state
-  }), applyMiddleware(thunk))
+  const store = createStore(reducer(initialState), applyMiddleware(thunk))
 
   if (initialState) {
     store.resume = () => fetch(connection, query, 'todos')(store.dispatch)
