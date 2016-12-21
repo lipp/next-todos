@@ -14,7 +14,7 @@ The canonical TodoApp using [node-jet](https://github.com/lipp/node-jet) as real
 
 It's note worthy, that the [redux store](https://github.com/lipp/next-todos/blob/master/store.js#L16) is identical for server and client js code! The only difference is that the store population on the server is triggered by the "finite" [redux-jet get](https://github.com/lipp/next-todos/blob/master/pages/index.js#L49) whereas the client issues an "infinite / streaming" [redux-jet fetch](https://github.com/lipp/next-todos/blob/master/pages/index.js#L56)
 
-The [components](https://github.com/lipp/next-todos/blob/master/components/) are jet-agnostic. All the jet related stuff are located in [pages/index.js](https://github.com/lipp/next-todos/blob/master/pages/index.js) and [store.js](https://github.com/lipp/next-todos/blob/master/store.js).
+The [components](https://github.com/lipp/next-todos/blob/master/components/) are jet-agnostic. All the jet related stuff is located in [containers dir](https://github.com/lipp/next-todos/blob/master/containers) and [store.js](https://github.com/lipp/next-todos/blob/master/store.js).
 
 # Server
 

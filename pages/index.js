@@ -1,31 +1,22 @@
 import React from 'react'
 import Head from 'next/head'
 import {Provider} from 'react-redux'
-import {get, fetch} from 'redux-jet'
-import connection from '../connection'
 import initStore from '../store.js'
 import Todos from '../containers/Todos'
 import AddTodoForm from '../containers/AddTodoForm'
 import Footer from '../containers/Footer'
-
-const todoExpression = {
-  path: {startsWith: 'todo/#'},
-  sort: {byValueField: {id: 'number'}, from: 1, to: 100}
-}
 
 export default class App extends React.Component {
 
   static getInitialProps ({req}) {
     if (req) {
       const store = initStore()
-      return get(connection, todoExpression, 'todos')(store.dispatch).then(() => {
-        return {initialState: store.getState(), store}
-      })
+      return store.getInitialState().then(initialState => ({initialState, store}))
     }
   }
 
   componentDidMount () {
-    fetch(connection, todoExpression, 'todos')(this.store.dispatch)
+    this.store.resume()
   }
 
   constructor (props) {
