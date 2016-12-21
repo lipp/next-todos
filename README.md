@@ -12,7 +12,7 @@ The canonical TodoApp using [node-jet](https://github.com/lipp/node-jet) as real
 
 [redux-jet](https://github.com/lipp/redux-jet) hides the stateful nature of the realtime streaming (where differences are pushed over the wire) and helps doing the isomorphic transition with `get` and `fetch` seamlessly.
 
-It's note worthy, that the [redux store](https://github.com/lipp/next-todos/blob/master/store.js#L16) is identical for server and client js code! The only difference is that the store population on the server is triggered by the "finite" [redux-jet get](https://github.com/lipp/next-todos/blob/master/pages/index.js#L49) whereas the client issues an "infinite / streaming" [redux-jet fetch](https://github.com/lipp/next-todos/blob/master/pages/index.js#L56)
+It's note worthy, that the [redux store](https://github.com/lipp/next-todos/blob/master/store.js#L16) is identical for server and client js code! The only difference is that the store population on the server is triggered by the "finite" [redux-jet get](https://github.com/lipp/next-todos/blob/master/store.js#L22) whereas the client issues an "infinite / streaming" [redux-jet fetch](https://github.com/lipp/next-todos/blob/master/pages/index.js#L56)
 
 The [components](https://github.com/lipp/next-todos/blob/master/components/) are jet-agnostic. All the jet related stuff is located in [containers dir](https://github.com/lipp/next-todos/blob/master/containers) and [store.js](https://github.com/lipp/next-todos/blob/master/store.js).
 
