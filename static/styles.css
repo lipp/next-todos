@@ -38,8 +38,10 @@ form {
 }
 form input[type='checkbox'] {
     -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
     transform: rotate(90deg);
     -webkit-appearance: none;
+    -moz-appearance: none;
     appearance: none;
     position: relative;
     width: 50px;
@@ -67,6 +69,7 @@ input[type='text'] {
     color: inherit;
     padding: 6px;
     border: 1px solid #999;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-font-smoothing: antialiased;
@@ -94,6 +97,8 @@ ul li input[type='checkbox'] {
     width: 60px;
     border: none;
     -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 button:focus,
 input[type='checkbox']:focus {
@@ -105,11 +110,14 @@ input[type='checkbox']:checked + input {
 }
 ul li button {
     -webkit-appearance: none;
+    -moz-appearance: none;
     appearance: none;
     background: none;
     border: 0;
     width: 40px;
     opacity: 0;
+    -webkit-transition: opacity 0.2s;
+    -moz-transition: opacity 0.2s;
     transition: opacity 0.2s;
 }
 ul li button:after {
