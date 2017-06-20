@@ -4,11 +4,13 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "next": "^1.2.3",
-    "react-redux": "^4.4.6",
-    "redux": "^3.6.0",
-    "redux-jet": "^1.2.1",
-    "redux-thunk": "^2.1.0"
+    "next": "^2.4.4",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-redux": "^4.4.8",
+    "redux": "^3.7.0",
+    "redux-jet": "^1.4.0",
+    "redux-thunk": "^2.2.0"
   },
   "scripts": {
     "dev": "next",
