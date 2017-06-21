@@ -24,5 +24,12 @@
   },
   "standard": {
     "parser": "babel-eslint"
+  },
+  "now": {
+    "name": "todos",
+    "alias": "todos.now.sh",
+    "env": {
+      "NODE_ENV": "production"
+    }
   }
 }
