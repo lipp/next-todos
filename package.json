@@ -5,6 +5,8 @@
   "license": "MIT",
   "dependencies": {
     "next": "^2.4.4",
+    "preact": "^8.1.0",
+    "preact-compat": "^3.16.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^4.4.8",
