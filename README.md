@@ -1,3 +1,7 @@
+#synk and codium pr agent 
+https://github.com/Codium-ai/pr-agent/blob/main/INSTALL.md#method-2-run-as-a-github-action
+
+
 # next-todos
 About 200 lines isomorphic todos app powered by [next.js](https://github.com/zeit/next.js/), [redux](https://github.com/reactjs/redux) and [Jet](http://jetbus.io) realtime. 
 
