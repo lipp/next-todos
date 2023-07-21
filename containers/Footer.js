@@ -2,7 +2,8 @@ import Footer from '../components/Footer'
 import {connect} from 'react-redux'
 import {call} from 'redux-jet'
 import connection from '../connection'
-
+var badcooode ="hhg";
+console.debug(badcooode  +'dasa')
 const actions = {
   setFilter: filter => ({type: 'SET_FILTER', filter}),
   clearCompleted: () => call(connection, 'todo/clearCompleted')
