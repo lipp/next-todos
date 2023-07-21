@@ -10,6 +10,8 @@ export default class App extends React.Component {
 
   static getInitialProps ({req}) {
     if (req) {
+      var test = 'something not good' 
+      test.find('/abc/')
       const store = initStore()
       return store.getInitialState().then(initialState => ({initialState, store}))
     }
